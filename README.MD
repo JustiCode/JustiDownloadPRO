@@ -1,4 +1,4 @@
-# JustiDownloadPRO 2.0.0
+# JustiDownloadPRO 2.0.0 — Nueva versión del proyecto
 
 **JustiDownloadPRO** es un programa portable para el sistema operativo Windows desarrollado por **Mauro Ocampo – JustiCode(drmauroocampo271@gmail.com)**, orientado a facilitar la búsqueda, descarga y reproducción de contenido multimedia mediante una interfaz accesible y optimizada para el uso con lectores de pantalla.
 
@@ -6,184 +6,275 @@ El proyecto nace desde una perspectiva de **accesibilidad universal**, combinand
 
 ## 🚀 Características principales
 
-* ♿ Interfaz accesible y optimizada para lectores de pantalla.
-* 🎬 Descarga de contenido multimedia.
-* 🎵 Conversión y descarga en distintos formatos.
-* ▶️ Reproducción mediante reproductores multimedia disponibles en el sistema.
-* 📋 Soporte para URLs de diferentes plataformas.
-* 📂 Gestión de archivos descargados.
-* 📑 Soporte para playlists con selección personalizada de contenidos.
-* 🔊 Integración con síntesis de voz para proporcionar información y confirmaciones.
-* 💻 programa portable.
-* ⚙️ Configuración persistente.
-* 🧩 Arquitectura modular mediante motores especializados.
-* 🛠️ Herramientas auxiliares integradas para el procesamiento multimedia.
+La versión 2.0.0 incorpora una importante evolución del proyecto, con mejoras en reproducción, descargas, gestión de playlists y compatibilidad con diferentes plataformas multimedia.
 
-## 🎵 Formatos
+Entre las principales novedades se incluyen:
 
-JustiDownloadPRO permite trabajar con diferentes formatos multimedia, entre ellos:
+* Reproducción multimedia mediante MotorV8.
+* Compatibilidad con diferentes reproductores multimedia instalados en Windows.
+* Descarga de contenido mediante `yt-dlp`.
+* Compatibilidad con YouTube.
+* Compatibilidad con SoundCloud.
+* Compatibilidad con Bandcamp.
+* Compatibilidad con Mixcloud.
+* Compatibilidad con Vimeo.
+* Compatibilidad con Twitch.
+* Compatibilidad con Spotify mediante reproducción con fallback al navegador.
+* Gestión de playlists.
+* Selección personalizada de elementos de una playlist.
+Descarga de los elementos seleccionados de una playlist.
+* Apertura automática del contenido descargado.
+* Selección de formato de descarga.
+* Mejoras de accesibilidad mediante teclado.
+* Mensajes y avisos mediante síntesis de voz.
+* Optimización de la navegación con lectores de pantalla.
+* Arquitectura preparada para incorporar nuevos servicios y reproductores.
+
+---
+
+## 🎵 Compatibilidad con SoundCloud
+
+JustiDownloadPRO_2.0.0 incorpora compatibilidad con **SoundCloud** mediante el sistema de extracción multimedia utilizado por el proyecto.
+
+Esto permite trabajar con contenido compatible de SoundCloud desde la misma interfaz utilizada para otros servicios multimedia.
+
+El soporte de SoundCloud se basa en el extractor correspondiente de `yt-dlp`, que actualmente incluye soporte para pistas, playlists, usuarios, búsquedas y otros tipos de contenido de SoundCloud.
+
+---
+
+## 🎵 Compatibilidad con Spotify
+
+JustiDownloadPRO incorpora compatibilidad con Spotify mediante MotorV8.
+
+Cuando el contenido puede procesarse mediante la ruta de reproducción disponible, MotorV8 intenta iniciar la reproducción correspondiente.
+
+Si esa ruta no puede utilizarse, el sistema utiliza automáticamente el navegador como mecanismo de fallback.
+
+De esta manera, Spotify puede seguir siendo accesible desde JustiDownloadPRO incluso cuando la reproducción externa no sea posible mediante el motor multimedia.
+
+El comportamiento concreto depende del tipo de URL y de las posibilidades disponibles para ese contenido.
+
+## 📋 Playlists personalizadas
+
+Una de las nuevas funciones de JustiDownloadPRO permite seleccionar individualmente qué elementos de una playlist se desean procesar.
+
+El flujo es:
+
+1. Seleccionar una playlist.
+2. Abrir **Playlist Personalizada**.
+3. Marcar los elementos deseados.
+4. Confirmar la selección.
+5. JustiDownloadPRO procesa únicamente los elementos seleccionados.
+
+La ventana de selección está diseñada para poder utilizarse mediante teclado y lectores de pantalla.
+
+También dispone de la opción **Cancelar**, permitiendo cerrar la ventana sin iniciar ninguna descarga.
+
+---
+
+## ▶️ Reproducción multimedia
+
+JustiDownloadPRO utiliza **MotorV8** como capa encargada de clasificar las URL y decidir el procedimiento adecuado de reproducción.
+
+El motor puede trabajar con:
+
+* Archivos locales.
+* Streams.
+* Contenido que requiere extracción.
+* Contenido que debe abrirse mediante navegador.
+
+Cuando existe un archivo multimedia local, Windows puede utilizar la aplicación asociada al tipo de archivo.
+
+Para determinadas reproducciones mediante URL, MotorV8 puede utilizar los reproductores multimedia disponibles en el sistema.
+
+Entre los reproductores contemplados por el proyecto se encuentran:
+
+* PotPlayer.
+* VLC.
+* Sonarpad
+* MPC-HC.
+* MPC-BE.
+* MPV.
+* GOM Player.
+
+La arquitectura está preparada para continuar ampliando esta compatibilidad.
+
+---
+
+## 📥 Descargas
+
+Las descargas utilizan `yt-dlp` como motor de extracción multimedia.
+
+El proyecto utiliza además herramientas auxiliares como **FFmpeg** y **Deno** cuando son necesarias para determinados procesos de extracción y procesamiento multimedia.
+
+JustiDownloadPRO genera los archivos temporales en una carpeta propia dentro del directorio temporal de Windows.
+
+---
+
+## 🎚️ Formatos
+
+La interfaz permite seleccionar diferentes formatos de descarga, entre ellos:
 
 * MP3
 * MP4
 * M4A
 * WAV
-* WEBM
-* MKV
 
-La disponibilidad del formato final puede depender del contenido de origen y de las capacidades de conversión disponibles.
+La selección del formato se realiza desde la interfaz de JustiDownloadPRO.
 
-## ▶️ Reproducción multimedia
+---
 
-JustiDownloadPRO incorpora un motor de reproducción que permite utilizar reproductores multimedia disponibles en el equipo.
+## 🔊 Accesibilidad
 
-El sistema puede trabajar con reproductores externos compatibles y también utilizar las asociaciones de archivos de Windows cuando corresponde.
+JustiDownloadPRO está diseñado teniendo en cuenta el uso cotidiano con lectores de pantalla.
 
-El objetivo es ofrecer una reproducción flexible sin obligar al usuario a utilizar un único reproductor.
+El programa incorpora:
 
-## 📋 Playlists
+* navegación mediante teclado;
+* controles accesibles;
+* mensajes mediante síntesis de voz;
+* cuadros de diálogo accesibles;
+* listas navegables mediante teclado;
+* botones accesibles;
+* selección mediante teclado;
+* confirmaciones y mensajes durante las operaciones principales.
 
-La aplicación incorpora herramientas para trabajar con playlists.
+El objetivo es que las funciones principales puedan utilizarse sin depender exclusivamente de una interfaz visual.
 
-La función **Playlist Personalizada** permite:
+---
 
-1. Obtener los elementos disponibles de una playlist.
-2. Mostrar los contenidos en una lista accesible.
-3. Seleccionar los elementos deseados.
-4. Descargar únicamente los contenidos seleccionados.
+## 🆕 Mejoras de la versión 2.0.0
 
-La interfaz está diseñada para facilitar la navegación mediante teclado y lectores de pantalla.
+### Motor multimedia
 
-## ♿ Accesibilidad
+* Incorporación y evolución del **MotorV8**.
+* Clasificación automática de URL.
+* Separación de las rutas de reproducción según el tipo de contenido.
+* Compatibilidad con archivos locales, streams, extracción y navegador.
+* Preparación para ampliar la compatibilidad con nuevos reproductores.
 
-La accesibilidad constituye uno de los objetivos centrales del proyecto.
+### Descargas
 
-JustiDownloadPRO está pensado para funcionar con lectores de pantalla como:
+* Mejor gestión de descargas temporales.
+* Integración con FFmpeg.
+* Integración con Deno para los procesos compatibles de extracción.
+* Mejor gestión de archivos generados.
+* Apertura automática del contenido descargado cuando esta opción está habilitada.
 
-* NVDA
-* JAWS
+### Playlists
 
-La aplicación utiliza controles y navegación mediante teclado, junto con mensajes de voz para informar sobre diferentes operaciones.
+* Incorporación de **Playlist Personalizada**.
+* Selección individual de elementos.
+* Cancelación de la ventana de selección.
+* Procesamiento únicamente de los elementos seleccionados.
 
-## 📦 programa portable
+### Plataformas
 
-JustiDownloadPRO se distribuye como programa portable.
+* YouTube.
+* SoundCloud.
+* Bandcamp.
+* Mixcloud.
+* Vimeo.
+* Twitch.
+* Facebook
+* Instagram
+* Spotify.
+* Y otras fuentes compatibles con `yt-dlp`.
 
-Esto significa que el usuario puede ejecutar la versión distribuida sin realizar una instalación tradicional del programa.
+> La compatibilidad concreta de cada sitio depende del extractor disponible en la versión de `yt-dlp` utilizada, ya que los servicios web pueden cambiar sus interfaces y mecanismos de acceso.
 
-Incluyendoo la creación de un acceso directo en el escritorio que contará coon el logoo del canal "Justicia Ciega" para facilitar el acceso de los ususarios.
-Los componentes auxiliares necesarios y dependencias para determinadas funciones se distribuyen junto con la aplicación cuando corresponde.
+---
 
-## 🖥️ Compatibilidad
+## ⚙️ Requisitos
 
-### Sistema operativo
+* Windows x64.
+* Python 3.x durante el desarrollo.
+* `yt-dlp`.
+* FFmpeg.
+* Deno cuando sea requerido por determinados extractores.
+* Uno o más reproductores multimedia compatibles para la reproducción externa.
 
-* Windows 10
-* Windows 11
-* Arquitectura x64
+---
 
-### Requisitos
+## 🧑‍🦯 Diseñado para accesibilidad
 
-* Conexión a Internet para las funciones que requieren acceso a contenido en línea.
-* Un reproductor multimedia compatible para las funciones de reproducción externa.
-* Espacio disponible para almacenar los contenidos descargados.
+JustiDownloadPRO nace desde una experiencia real de uso con lectores de pantalla.
 
-## 🚀 Instalación y uso
+El proyecto busca facilitar el acceso a herramientas multimedia para:
 
-### Versión portable
+* personas con discapacidad visual (Total o parcial);
+* personas con baja visión;
+* usuarios de NVDA;
+* usuarios de  Jaws
+* usuarios que prefieren trabajar mediante teclado;
+* y cualquier persona que valore una interfaz sencilla y accesible.
 
-1. Descargá la versión correspondiente desde la sección **Releases**.
-2. Extraé el contenido del paquete.
-3. Ejecutá el programa(con privilegios de administrador la primera vez).
-4. Utilizá la interfaz para realizar búsquedas, seleccionar contenidos y comenzar las descargas.
+La accesibilidad no se considera una función adicional, sino una parte troncal del diseño del  programa.
 
-No es necesario realizar una instalación tradicional.
+---
 
-## 🛠️ Tecnología
+## 🛠️ Estado del proyecto
 
-JustiDownloadPRO está desarrollado principalmente con:
+JustiDownloadPRO continúa en desarrollo.
 
-* Python
-* wxPython
-* yt-dlp
-* FFmpeg
-* Deno
-* herramientas de reproducción multimedia para Windows
+Las futuras versiones podrán incorporar:
 
-La arquitectura del proyecto está organizada mediante componentes independientes para facilitar el mantenimiento y la evolución del programa.
+* nuevos servicios multimedia;
+* nuevos reproductores;
+* mejoras de reproducción;
+* nuevas herramientas para playlists;
+* mejoras de accesibilidad;
+* optimizaciones de rendimiento;
+* nuevas funciones orientadas a la automatización multimedia.
 
-## 📁 Arquitectura
+---
 
-El proyecto utiliza diferentes componentes especializados, entre ellos:
-
-* Interfaz principal.
-* Motor multimedia.
-* Motor de configuración.
-* Herramientas de descarga.
-* Herramientas de reproducción.
-* Componentes de accesibilidad.
-
-Esta separación permite incorporar nuevas funciones sin modificar innecesariamente el núcleo de la aplicación.
-
-## 🔄 Versión 2.0.0
-
-La versión 2.0.0 representa una evolución importante de JustiDownloadPRO.
-
-Entre los principales cambios se incluyen:
-
-* Modernización de la arquitectura interna.
-* Mejoras en el motor multimedia.
-* Mejoras en la reproducción.
-* Soporte ampliado para diferentes reproductores.
-* Mejoras en el trabajo con playlists.
-* Mejoras de accesibilidad.
-* Mejoras en la gestión de formatos.
-* Mayor estabilidad general.
-* Reorganización interna del código.
-* Preparación de la arquitectura para futuras versiones.
-
-## 📥 Descarga
-
-La versión más reciente puede descargarse desde la sección **Releases** del repositorio oficial de JustiCode.
-
-**Repositorio:**
-[https://github.com/JustiCode/JustiDownloadPRO]
-
-**Releases:**
-[]
-
-## 🐞 Reporte de problemas
-
-Si encontrás un problema, una incompatibilidad o una función que pueda mejorarse, podés reportarla mediante el sistema de **Issues** del repositorio.
-
-Al informar un problema, se recomienda incluir:
-
-* Versión de JustiDownloadPRO.
-* Versión de Windows.
-* Arquitectura del sistema.
-* Reproductor utilizado.
-* URL o tipo de contenido afectado, cuando corresponda.
-* Descripción del comportamiento observado.
-*Copiar archivo Error.log que se encuentra dentro de la carpeta internal y adjuntarlo en mensaje a: (justiciaciega45@gmail.com).
- 
 ## 👨‍💻 Autor
 
 **Mauro Ocampo – JustiCode**
 
-Desarrollador independiente de software y herramientas orientadas a la accesibilidad.
+---
 
-## 📺 Justicia Ciega
+## 📂 Repositorio
 
-JustiDownloadPRO forma parte del ecosistema de programas y proyectos relacionados con accesibilidad y tecnología desarrollados dentro del espacio **JustiSoftware**.
+**JustiDownloadPRO**
 
-## ⚖️ Aviso
-
-JustiDownloadPRO es una herramienta tecnológica para la gestión de contenido multimedia.
-
-El usuario es responsable de utilizarla respetando las leyes aplicables, los derechos de autor y las condiciones de servicio de las plataformas utilizadas, eximiendo in totun al desarrollador por el uso  indebido o negligente de su obrar.
+https://github.com/JustiCode/JustiDownloadPRO
 
 ---
 
-**Hecho en Buenos Aires, Argentina(Publicado en septiembre de 2026)).**
+## 📄 Licencia
 
-**JustiCode — tecnología accesible para todos.**
-**"Porque Detrás de cada barrera de accesibilidad, existe una oportunidad para innovar."**
+Este proyecto se distribuye bajo la licencia especificada en el repositorio.
+
+---
+
+## 🙏 Agradecimientos
+
+Gracias a todas las personas y compañeros que prueban JustiDownloadPRO en su ettape de  contrastación "BETA", informan errores, aportan sugerencias y ayudan a mejorar la accesibilidad del proyecto.
+
+Las pruebas realizadas en diferentes equipos, versiones de Windows, reproductores y configuraciones son fundamentales para detectar problemas de compatibilidad y continuar mejorando el motor multimedia.
+
+---
+
+## ⏳Historial de Versiones
+
+**Versión 1.0.0 _ Primera versión pública.
+
+Versión 1.1.0 _ Segunda versión pública
+
+Versión 2.0.0 — Tercera versión pública** 
+
+## 🔥 JustiCode
+
+**Accesibilidad, automatización y software pensado para todos  y todas.**
+
+## 🌐 Contacto y Comunidad
+* **YouTube:** [Justicia Ciega](https://www.youtube.com/channel/UCBQ80jeP7QGvjUIsnrMSCng)
+* **Blog:** [Justicia Cesgada](https://justiciacesgada.blogspot.com)
+* **Email:** justiciaciega45@gmail.com
+
+---
+*Hecho en Buenos Aires, Argentina en septiembre de 2026. Porque la tecnología debe ser para todos y todas.*
+
+¡Que no te digan que no podés!
